@@ -1,0 +1,22 @@
+{
+  "name": "downloader-web",
+  "version": "1.0.0",
+  "description": "TikTok & YouTube Downloader",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node server.js",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "vercel": "^28.16.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
