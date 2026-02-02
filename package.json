@@ -1,22 +1,20 @@
 {
-  "name": "downloader-web",
-  "version": "1.0.0",
-  "description": "TikTok & YouTube Downloader",
-  "main": "public/index.html",
+  "name": "tiktok-downloader-web",
+  "version": "2.0.0",
+  "description": "TikTok & YouTube Downloader - Deploy di Vercel",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "node server.js",
-    "deploy": "vercel --prod"
+    "build": "./scripts/install-yt-dlp.sh",
+    "start": "node server.js"
   },
   "dependencies": {
-    "child_process": "^1.0.2",
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "axios": "^1.6.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "vercel": "^28.16.0"
+    "@vercel/node": "^2.15.5"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": "18.x"
   }
 }
