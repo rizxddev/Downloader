@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 TikTok & YouTube Downloader - Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-download"></i>
+                <h1>Termux Downloader Online</h1>
+            </div>
+            <p class="tagline">Download TikTok & YouTube tanpa watermark</p>
+            <div class="badges">
+                <span class="badge"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="badge"><i class="fas fa-cloud"></i> Vercel</span>
+                <span class="badge"><i class="fab fa-youtube"></i> YouTube</span>
+                <span class="badge"><i class="fab fa-tiktok"></i> TikTok</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Platform Selection -->
+            <div class="platform-selector">
+                <button class="platform-btn active" data-platform="tiktok">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </button>
+                <button class="platform-btn" data-platform="youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </button>
+            </div>
+
+            <!-- URL Input -->
+            <div class="url-input-section">
+                <div class="input-group">
+                    <i class="fas fa-link"></i>
+                    <input type="text" id="urlInput" placeholder="Paste link TikTok atau YouTube di sini...">
+                    <button id="analyzeBtn">
+                        <i class="fas fa-search"></i> Analyze
+                    </button>
+                </div>
+                
+                <div class="examples">
+                    <p><strong>Contoh URL:</strong></p>
+                    <div class="example-links">
+                        <span>TikTok: <code>https://vm.tiktok.com/ABC123</code></span>
+                        <span>YouTube: <code>https://youtu.be/dQw4w9WgXcQ</code></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="spinner"></div>
+                <p>Memproses video, harap tunggu...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="statusText">Menganalisis URL...</p>
+            </div>
+
+            <!-- Video Info -->
+            <div class="video-info-section" id="videoInfoSection" style="display: none;">
+                <h3><i class="fas fa-info-circle"></i> Video Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Title:</span>
+                        <span class="value" id="videoTitle">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Author:</span>
+                        <span class="value" id="videoAuthor">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Duration:</span>
+                        <span class="value" id="videoDuration">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Views:</span>
+                        <span class="value" id="videoViews">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Options -->
+            <div class="download-options" id="downloadOptions" style="display: none;">
+                <h3><i class="fas fa-download"></i> Download Options</h3>
+                <div class="options-grid" id="optionsGrid">
+                    <!-- Options will be populated by JS -->
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="success-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Download Ready!</h3>
+                    <p id="resultMessage">Your file is ready to download</p>
+                    <a id="downloadLink" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                    <button onclick="resetForm()" class="secondary-btn">
+                        <i class="fas fa-redo"></i> Download Another
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Error!</h3>
+                    <p id="errorMessage"></p>
+                    <button onclick="hideError()">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <h2><i class="fas fa-cogs"></i> How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h4>1. Termux Script</h4>
+                    <p>Original Bash script converted to Node.js</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>2. API Conversion</h4>
+                    <p>yt-dlp commands converted to serverless functions</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h4>3. Vercel Deployment</h4>
+                    <p>Deployed on Vercel's edge network</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4>4. Download Anywhere</h4>
+                    <p>Access from any device with browser</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2><i class="fas fa-star"></i> Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Fast Processing</h4>
+                    <p>Uses yt-dlp for fastest downloads</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-ban"></i>
+                    <h4>No Watermark</h4>
+                    <p>TikTok videos without watermark</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile Friendly</h4>
+                    <p>Works perfectly on mobile devices</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure</h4>
+                    <p>No data storage, privacy focused</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>This tool converts Termux yt-dlp script to a web service.</p>
+                    <p>Originally created for Termux, now available online.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Technologies</h4>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Vercel Serverless</li>
+                        <li>yt-dlp</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p><strong>Disclaimer:</strong> For personal use only. Respect copyrights.</p>
+                    <p>Download content you own or have permission to download.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Downloader Online</p>
+                <p>Original Script: <code>downloader.sh</code> | Deployed on Vercel</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
